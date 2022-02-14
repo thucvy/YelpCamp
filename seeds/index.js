@@ -1,3 +1,9 @@
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config()
+}
+
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelpCampGround';
+
 const mongoose = require('mongoose');
 const cities = require('./cities');
 const { places, descriptors } = require('./seedHelpers');
@@ -7,7 +13,7 @@ const User = require('../models/user')
 main().catch(err => console.log(err));
 
 async function main() {
-    await mongoose.connect('mongodb://localhost:27017/yelpCampGround'); //create new db instance if not existed
+    await mongoose.connect(dbUrl); //create new db instance if not existed
     console.log('Mongo Connection open!!!')
 }
 
@@ -16,7 +22,7 @@ const sample = array => array[Math.floor(Math.random() * array.length)];
 
 const seedDB = async () => {
     await Campground.deleteMany({});
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < 50; i++) {
         const random1000 = Math.floor(Math.random() * 1000);
         const price = Math.floor(Math.random() * 20) + 10;
         const camp = new Campground({
@@ -34,7 +40,7 @@ const seedDB = async () => {
             ],
             description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus, natus dolorum ea, neque ex autem enim inventore reiciendis sunt cumque deleniti exercitationem tenetur sequi. Libero ad qui magnam molestias vel.',
             price,
-            author: '6205fb49e5a442738e15045f',
+            author: '6209c720ad494cf6ec879206',
             geometry: {
                 type: "Point",
                 coordinates: [

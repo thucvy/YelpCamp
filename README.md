@@ -1,4 +1,3 @@
-#YelpCamp
+# Welcome to YelpCamp!
 
-Click this link below for the deployed web app
-https://agile-reaches-14243.herokuapp.com/
+Please click [HERE](https://agile-reaches-14243.herokuapp.com/) to jump right into the live app. Enjoy!
